@@ -1,0 +1,135 @@
+<div ng-controller="FlightController">
+    <div class="container">
+        <div class="row">
+        	<h5>航班查询:</h5>
+            <form class="form-inline">
+                <div class="col-sm-9">  	
+                    <div class="col-sm-3 form-group">
+                        <label for="leaveCity" class="control-label">出发城市:</label>
+                        <input type="text" ng-model="searchFlights.no" class="form-control " id="leaveCity" name="leaveCity" placeholder="航班号">
+                    </div>
+                    <div class="col-sm-3 form-group">
+                        <label for="arrivalCity" class="control-label">到达城市:</label>
+                        <input type="text" ng-model="searchFlights.no" class="form-control " id="arrivalCity" name="arriveCity" placeholder="航班号">
+                    </div>
+                    <div class="col-sm-5 form-group">
+                        <label for="leaveTime" class="control-label">出发时间:</label>
+                        <div class="input-group input-group-xs date form_datetime" data-date="" data-date-format="dd MM yyyy - HH:ii p" data-link-field="dtp_input1">
+                            <input type="text" id="leaveTime" class="form-control" readonly>
+                             <a href="#" class="btn btn-default input-group-addon"><span class="glyphicon glyphicon-remove"></span></a>
+                             <a href="#" class="btn btn-default input-group-addon"><span class=" glyphicon glyphicon-th"></span></a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-1">
+                    <input type="button" class="btn btn-default" value="查询" id="search" ng-click="allFlights(1)">
+                </div>          
+            </form>
+        </div>
+    </div>
+
+    <!-- 查询页面 -->
+    <div class="container" style="margin-top:30px;">
+        <div class="row">
+            <table class="table table-bordered table-hover table-responsive">
+                <thead>
+                    <tr>
+                        <th>编号</th>
+                        <th>航班号</th>
+                        <th>航班公司</th>
+                        <th>飞机机型</th>
+                        <th>出发时间</th>
+                        <th>到达时间</th>
+                        <th>票价</th>
+                        <th>操作</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr ng-repeat="v in params">
+                        <td>{{$index+1}}</td>
+                        <td>{{v.no}}</td>
+                        <td>{{v.company}}</td>
+                        <td>{{v.model}}</td>
+                        <td>{{v.leaveTime}}</td>
+                        <td>{{v.arrivalTime}}</td>
+                        <td>
+                           <p>经济舱:{{v.economyPrice}}</p>
+                           <p>头等舱:{{v.firstPrice}}</p>
+                        </td>
+                        <td>
+                             <input type='button' class='btn btn-xs btn-default' value='预订' ng-click="">
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <div class="container">
+        <div class="row" align="center">
+            <!-- Bootstrap 分页 -->
+            <ul id="paginator" class="pagination">
+
+            </ul>
+        </div>
+    </div>
+
+    <!-- 预订的模态框-->
+    <div class="modal" id="m4">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <h3 class="modal-header">预订确认
+                    <button class="close" data-dismiss="modal">&times;</button>
+                </h3>
+                <div class="row" style="margin:0 auto;">
+                  <form class="form-horizontal" role="form">
+                        <input type="hidden" name="id" id="id" ng-model="modData.id">
+                        <div class="form-group">   
+                            <label for="id2" class="col-sm-2 col-sm-offset-2 control-label">航班号</label>
+                            <div class="col-sm-5">    
+                                <input type="text" id="id2"  class="form-control" ng-model="modData.no">
+                            </div>
+                        </div>
+                        <div class="form-group">   
+                            <label for="passName" class="col-sm-2 col-sm-offset-2 control-label">姓名</label>
+                            <div class="col-sm-5">    
+                                <input type="text" id="passName" class="form-control" ng-model="modData.company">
+                            </div>
+                        </div>
+                        <div class="form-group">   
+                            <label for="identityCode" class="col-sm-2 col-sm-offset-2 control-label">身份证号</label>
+                            <div class="col-sm-5">                    
+                                <input type="text" id="identityCode"  class="form-control" ng-model="modData.totleSeats">
+                            </div>
+                        </div>
+                        <div class="form-group">   
+                            <label for="nowCity" class="col-sm-2 col-sm-offset-2 control-label">城市区间</label>
+                            <div class="col-sm-5">    
+                                <input type="text" id="nowCity"  class="form-control" ng-model="modData.leaveCity">
+                                <span>-</span>
+                                <input type="text" id="arrivalCity"  class="form-control" ng-model="modData.leaveCity">
+                            </div>
+                        </div>
+                        <div class="form-group">   
+                            <label for="nowTime" class="col-sm-2 col-sm-offset-2 control-label">时间区间</label>
+                            <div class="col-sm-5">
+                                <input type="text" id="nowTime"  class="form-control" ng-model="modData.arrivalCity">
+                                <span>-</span>
+                                <input type="text" id="arrivalTime"  class="form-control" ng-model="modData.leaveCity">
+                            </div>
+                        </div>
+                        <div class="form-group">   
+                            <label for="ticketPrice" class="col-sm-2 col-sm-offset-2 control-label">价格</label>
+                            <div class="col-sm-5">
+                                <input type="text" id="ticketPrice"  class="form-control" ng-model="modData.arrivalCity">
+                            </div>
+                        </div>  
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button class="btn btn-primary" ng-click="modifyFlight()">确认</button>
+                    <button class="btn btn-default" onclick="doCancel()">取消</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

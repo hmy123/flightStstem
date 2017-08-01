@@ -1,0 +1,63 @@
+<div class="container">
+    <div class="row" style="margin:0 auto;">
+      <form class="form-horizontal" role="form">
+            <input type="hidden" name="id" id="id" ng-model="addData.id">    
+            <div class="form-group">   
+                <label for="name" class="col-sm-2 col-sm-offset-2 control-label">用户登录名</label>
+                <div class="col-sm-5">    
+                    <input type="text" id="name"  class="form-control" ng-model="addData.no" placeholder="用户登录名">
+                </div>
+            </div>
+            <div class="form-group">   
+                <label for="type" class="col-sm-2 col-sm-offset-2 control-label">用户密码</label>
+                <div class="col-sm-5">    
+                    <input type="text" id="type"  class="form-control" ng-model="addData.model">
+                </div>
+            </div>
+            <div class="form-group">   
+                <label for="comp" class="col-sm-2 col-sm-offset-2 control-label">重复密码</label>
+                <div class="col-sm-5">    
+                    <input type="text" id="comp"  class="form-control" ng-model="addData.company">
+                </div>
+            </div>
+            <div class="form-group">   
+                <label for="seats" class="col-sm-2 col-sm-offset-2 control-label">用户姓名</label>
+                <div class="col-sm-5">                    
+                    <input type="text" id="seats"  class="form-control" ng-model="addData.totleSeats">
+                </div>
+            </div>
+            <div class="form-group">   
+                <label for="nowCity" class="col-sm-2 col-sm-offset-2 control-label">性别</label>
+                <div class="col-sm-2">
+                    <label for="man" class="col-sm-2 col-sm-offset-2">男</label>   
+                    <input type="radio" id="man">
+                    
+                </div>
+                <div class="col-sm-2">
+                    <label for="women" class="col-sm-2 col-sm-offset-2">女</label>
+                    <input type="radio" id="women">
+                </div>
+                    
+            </div>
+            <div class="form-group">   
+                <label for="nowCity" class="col-sm-2 col-sm-offset-2 control-label">身份证号</label>
+                <div class="col-sm-5">    
+                    <input type="text" id="nowCity"  class="form-control" ng-model="addData.leaveCity">
+                </div>
+            </div>
+            <div class="form-group">   
+                <label for="arriveCity" class="col-sm-2 col-sm-offset-2 control-label">邮箱</label>
+                <div class="col-sm-5">
+                    <input type="text" id="arriveCity"  class="form-control" ng-model="addData.arrivalCity">
+                </div>
+            </div>
+            
+             
+        
+        </form>
+    </div>
+    <div class="modal-footer">
+        <button class="btn btn-primary" ng-click="addFlight()">添加</button>
+        <button class="btn btn-default" onclick="doCancel()">取消</button>
+    </div>
+</div>

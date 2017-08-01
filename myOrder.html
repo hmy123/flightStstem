@@ -1,0 +1,54 @@
+<div ng-controller="FlightController">
+
+    <!-- 查询页面 -->
+    <div class="container" style="margin-top:30px;">
+        <div class="row">
+            <table class="table table-bordered table-hover table-responsive">
+                <thead>
+                    <tr>
+                        <th>编号</th>
+                        <th>订单号</th>
+                        <th>航班号</th>
+                        <th>飞机机型</th>
+                        <th>
+                            <h5>城市区间</h5>
+                            <h5 style="margin-bottom:0px;">(出发城市--到达城市)</h5>
+                        </th>
+                        <th>
+                            <h5>时间区间</h5>
+                            <h5 style="margin-bottom:0px;">(出发时间--到达时间)</h5>
+                        </th>
+                        <th>出发日期</th>
+                        <th>仓位</th>
+                        <th>票价</th>
+                        <th>操作</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr ng-repeat="v in params">
+                        <td>{{$index+1}}</td>
+                        <td>{{}}</td>
+                        <td>{{v.no}}</td>
+                        <td>{{v.model}}</td>
+                        <td>{{v.leaveCity}}-{{v.arrivalCity}}</td>
+                        <td>{{v.leaveTime}}-{{v.arrivalTime}}</td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td>
+                            <input type='button' class='btn btn-xs btn-default' value='退票' ng-click="">
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <div class="container">
+        <div class="row" align="center">
+            <!-- Bootstrap 分页 -->
+            <ul id="paginator" class="pagination">
+
+            </ul>
+        </div>
+    </div>
+</div>

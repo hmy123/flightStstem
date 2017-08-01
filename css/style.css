@@ -1,0 +1,31 @@
+#mynav a{
+	height:50px;
+}
+#leaveCity{
+	width:100px;
+	height:34px;
+	border-radius: 17px;
+}
+#arrivalCity{
+	width:100px;
+	height:34px;
+	border-radius: 17px;
+}
+#no{
+	width:100px;
+	height:34px;
+	border-radius: 17px;
+}
+#company{
+	width:100px;
+	height:34px;
+	border-radius: 17px;
+}
+#flightNumber{
+	width:100px;
+	height:34px;
+	border-radius: 17px;
+}
+table th{
+	text-align: center;
+}

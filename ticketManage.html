@@ -1,0 +1,60 @@
+<div ng-controller="FlightController">
+    <div class="container">
+        <div class="row">
+        	<h5>查询条件:</h5>
+            <form class="form-inline">
+                <div class="col-sm-6">  	
+                    <div class="col-sm-4 form-group">
+                        <label for="flightNumber" class="control-label">航班号:</label>
+                        <input type="text" ng-model="searchFlights.no" class="form-control " id="flightNumber" name="flightNumber" placeholder="航班号">
+                    </div>
+                    <div class="col-sm-1">
+                    	<input type="button" class="btn btn-default" value="查询" id="search" ng-click="allFlights(1)">
+               		 </div>
+                </div>
+                 
+            </form>
+        </div>
+    </div>
+
+    <!-- 查询页面 -->
+    <div class="container" style="margin-top:30px;">
+        <div class="row">
+            <table class="table table-bordered table-hover table-responsive">
+                <thead>
+                    <tr>
+                        <th>编号</th>
+                        <th>航班号</th>
+                        <th>出发城市</th>
+                        <th>到达城市</th>
+                        <th>时间区间</th>
+                        <th>航空公司</th>
+                        <th>操作</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr ng-repeat="v in params">
+                        <td>{{$index+1}}</td>
+                        <td>{{v.no}}</td>
+                        <td>{{v.leaveCity}}</td>
+                        <td>{{v.arrivalCity}}</td>
+                        <td>{{v.leaveTime}}-{{v.arrivalTime}}</td>
+                        <td>{{v.company}}</td>
+                        <td>
+                            <input type='button' class='btn btn-xs btn-default' value='修改' ng-click="doModify(v.no)">
+                            <input type='button' class='btn btn-xs btn-default' value='删除' ng-click="doDelete(v.id)">
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <div class="container">
+        <div class="row" align="center">
+            <!-- Bootstrap 分页 -->
+            <ul id="paginator" class="pagination">
+
+            </ul>
+        </div>
+    </div>
+</div>
